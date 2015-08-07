@@ -24,7 +24,11 @@
 
 // App Globals
 // ===============================================
-html,body{height:100%;}body{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;background:#261632;}
+
+html,body {height:100%;}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;background:#261632;}
+
+
 // Utilities
 // ===============================================
 
@@ -45,23 +49,13 @@ html,body{height:100%;}body{display:flex;flex-direction:column;align-items:cente
 
 @import "molecules/socials";
 
-footer[role="contentinfo"] {
-  width: 100%;
-  text-align: center;
-}
-
 
 // Organisms
 // ===============================================
 // Landing
 // ===============================================
-
-
 // Pages
 // ===============================================
-
-// Landing
-// ============
 
 .landing main {
   max-width: 1181px;
