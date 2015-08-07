@@ -309,7 +309,8 @@ gulp.task('copy', ['usemin'], function() {
         .pipe(gulp.dest(path.dist)),
 
     gulp.src([
-        path.site + '/{*,CNAME}.{ico,png,txt}',
+        path.site + '/*.{ico,png,txt}',
+        path.site + '/CNAME'
       ]).pipe(gulp.dest(path.dist))
   );
 });
