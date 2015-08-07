@@ -1,0 +1,69 @@
+// Config
+// ===============================================
+
+@import "vars/styling";
+
+
+// Mixins
+// ===============================================
+
+@import "mixins/media-query";
+
+
+// Bower Plugins
+// ===============================================
+
+@import "../../bower_components/normalize-scss/normalize";
+
+
+// Globals
+// ===============================================
+
+@import "globals/bases";
+
+
+// App Globals
+// ===============================================
+html,body{height:100%;}body{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;background:#261632;}
+// Utilities
+// ===============================================
+
+
+// Atoms
+// ===============================================
+
+@import "atoms/typography";
+
+.pub-logo {
+  width: 120px;
+  height: 48px;
+}
+
+
+// Molecules
+// ===============================================
+
+@import "molecules/socials";
+
+footer[role="contentinfo"] {
+  width: 100%;
+  text-align: center;
+}
+
+
+// Organisms
+// ===============================================
+// Landing
+// ===============================================
+
+
+// Pages
+// ===============================================
+
+// Landing
+// ============
+
+.landing main {
+  max-width: 1181px;
+  margin: 0 auto;
+}

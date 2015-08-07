@@ -1,0 +1,20 @@
+{
+  "name": "DroidPinkman",
+  "authors": [
+    "Dennis Gaebel <dennisgaebel@gmail.com>"
+  ],
+  "license": "CC30",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-scss": "~3.0.3",
+    "typeplate-starter-kit": "~2.1.0",
+    "ScrollMagic": "~2.0.5"
+  }
+}

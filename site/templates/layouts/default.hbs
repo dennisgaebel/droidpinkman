@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="{{#is 'landing' this.basename}}landing{{/is}}" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{title}}{{#any 'landing' this.basename}} › Front-end Web Development, Interaction & Design{{/any}}</title>
+    <meta name="description" content="{{description}}">
+    {{#if production}}
+    <meta name="robots" content="all">
+    {{else}}
+    <meta name="robots" content="none">
+    {{/if}}
+    <meta name="author" content="{{title}}">
+    <meta name="Copyright" content="Copyright Dennis Gaebel ©2015. All Rights Reserved.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <meta property="og:title" content="{{site.title}}">
+    <meta property="og:type" content="company">
+    <meta property="og:url" content="{{site.url}}">
+    <meta property="og:image" content="{{site.url}}/ograph.png">
+    <meta property="og:description" content="{{site.description}}">
+    <meta property="fb:admins" content="1">
+
+    <link rel="author" href="http://droidpinkman.io/humans.txt">
+
+    <!-- build:css {{site.root}}/css/style.min.css -->
+    {{#any 'landing' this.basename}}
+    <link rel="stylesheet" href="{{site.root}}/css/site.css">
+    {{/any}}
+    <!-- endbuild -->
+  </head>
+  <body id="top">
+
+  <main role="main">
+  {% body %}
+  {{> footer}}
+  </main>
+
+  <!-- build:js {{site.root}}/js/src/scripts.min.js -->
+  <script src="{{site.root}}/js/src/social-bloomer.js"></script>
+  <!-- endbuild -->
+
+  {{#if production}}
+  <script>var _gaq=[['_setAccount','XX-XXXXXXXX-X'],['_setDomainName','www.droidpinkman.io'],['_trackPageview'],['_trackPageLoadTime']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));</script>
+  {{/if}}
+  </body>
+</html>
