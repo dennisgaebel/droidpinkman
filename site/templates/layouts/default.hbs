@@ -12,7 +12,7 @@
     <meta name="robots" content="none">
     {{/if}}
     <meta name="author" content="{{title}}">
-    <meta name="Copyright" content="Copyright Dennis Gaebel ©2015. All Rights Reserved.">
+    <meta name="Copyright" content="Copyright {{author}} ©2015. All Rights Reserved.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
     <meta name="HandheldFriendly" content="True">
@@ -21,7 +21,7 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <meta property="og:title" content="{{site.title}}">
-    <meta property="og:type" content="company">
+    <meta property="og:type" content="profile">
     <meta property="og:url" content="{{site.url}}">
     <meta property="og:image" content="{{site.url}}/ograph.png">
     <meta property="og:description" content="{{site.description}}">
@@ -39,18 +39,12 @@
 
   <main role="main">
   {% body %}
-  {{> footer}}
   </main>
+
+  {{> footer}}
 
   <!-- build:js {{site.root}}/js/src/scripts.min.js -->
   <script src="{{site.root}}/js/src/social-bloomer.js"></script>
   <!-- endbuild -->
-
-  {{#if production}}
-  <script>var _gaq=[['_setAccount','XX-XXXXXXXX-X'],['_setDomainName','www.droidpinkman.io'],['_trackPageview'],['_trackPageLoadTime']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)}(document,'script'));</script>
-  {{/if}}
   </body>
 </html>
