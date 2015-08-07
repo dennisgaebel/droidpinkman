@@ -32,9 +32,7 @@
     <link rel="author" href="http://droidpinkman.io/humans.txt">
 
     <!-- build:css {{site.root}}/css/style.min.css -->
-    {{#any 'landing' this.basename}}
     <link rel="stylesheet" href="{{site.root}}/css/site.css">
-    {{/any}}
     <!-- endbuild -->
   </head>
   <body id="top">
@@ -44,8 +42,5 @@
     </main>
 
     {{> footer}}
-
-    <!-- build:js {{site.root}}/js/src/scripts.min.js -->
-    <!-- endbuild -->
   </body>
 </html>

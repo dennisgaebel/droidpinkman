@@ -26,5 +26,3 @@ imgdir:            <%= site.root %>/img/site
 title:              DroidPinkman
 author:             <%= pkg.author %>
 url:                <%= pkg.homepage %>
-
-...

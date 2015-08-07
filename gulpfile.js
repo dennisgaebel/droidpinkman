@@ -6,6 +6,7 @@ var gulp            = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     $               = gulpLoadPlugins({
                         rename: {
+                          'gulp-sourcemaps'  : 'sourcemaps',
                           'gulp-minify-css'  : 'mincss',
                           'gulp-minify-html' : 'minhtml',
                           'gulp-gh-pages'    : 'ghPages',
@@ -28,7 +29,7 @@ $.fs     = require('fs');
 // Configin'
 // ===================================================
 
-var env_flag = false;
+var env_flag = true;
 
 var asset_dir = {
   site: 'site',
@@ -114,7 +115,17 @@ gulp.task('mocha', function () {
 
 gulp.task('sass', function() {
   var stream = gulp.src(glob.sass)
-    .pipe($.sass())
+    .pipe($.if(env_flag === false, $.sourcemaps.init()))
+    .pipe($.sass({
+      outputStyle: $.if(env_flag === false, 'expanded', 'compressed')
+    }))
+    .pipe($.if(env_flag === false,
+      $.sourcemaps.write({
+        debug: true,
+        includeContent: false,
+        sourceRoot: path.css
+      })
+    ))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -265,19 +276,6 @@ gulp.task('svgstore', function() {
 
 
 // ===================================================
-// Minifyin'
-// ===================================================
-
-gulp.task('cssmin', ['sass'], function() {
-  var stream = gulp.src(glob.css)
-    .pipe($.mincss({ keepBreaks:true }))
-    .pipe(gulp.dest(path.css));
-
-  return stream;
-});
-
-
-// ===================================================
 // Buildin'
 // ===================================================
 
@@ -286,14 +284,14 @@ gulp.task('cssmin', ['sass'], function() {
  * multiple files as an array.
  */
 
-gulp.task('usemin', ['assemble', 'cssmin'], function() {
+gulp.task('usemin', ['assemble', 'sass'], function() {
   return gulp.src(glob.html)
     .pipe($.foreach(function(stream, file) {
       return stream
         .pipe($.usemin({
           assetsDir: path.site,
           css: [ $.rev() ],
-          html: [ $.minhtml({ empty: true }) ],
+          html: [ $.minhtml({ empty: false }) ],
           js: [ $.uglify(), $.rev() ]
         }))
         .pipe(gulp.dest(path.dist));
@@ -311,9 +309,7 @@ gulp.task('copy', ['usemin'], function() {
         .pipe(gulp.dest(path.dist)),
 
     gulp.src([
-        'webhook.php',
-        path.site + '/*.{ico,png,txt}',
-        path.site + '/CNAME',
+        path.site + '/{*,CNAME}.{ico,png,txt}',
       ]).pipe(gulp.dest(path.dist))
   );
 });
@@ -324,12 +320,12 @@ gulp.task('copy', ['usemin'], function() {
 // ===================================================
 
 gulp.task('deploy', function() {
-  return gulp.src([path.dist + '/**/*', path.dist + '/.htaccess' ])
-              .pipe($.ghPages(
+  return gulp.src([path.dist + '/**/*'])
+             .pipe($.ghPages(
                 $.if(env_flag === false,
                 { branch: 'staging' },
-                { branch: 'gh-pages' })
-              ));
+                { branch: 'gh-pages'})
+             ));
 });
 
 
@@ -341,7 +337,6 @@ gulp.task('clean', function(cb) {
   del([
     'dist',
     glob.css,
-    path.site + '/client',
     glob.html
   ], cb);
 });
