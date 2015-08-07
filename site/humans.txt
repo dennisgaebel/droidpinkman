@@ -38,6 +38,5 @@ ooooooooooooo                     oooo
 -------------------------------------------------------------------------------
 
 Tooling: SublimeText, Fetch, iTerm, Illustrator, Photoshop, Gulp, Node, Git, Assemble, Bower, NPM
-Addons: Prism, jQuery
 OpenSource HT: Atomic Guide, Normalize
 Platform: Node
