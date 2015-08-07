@@ -6,13 +6,15 @@
 
     <title>{{title}}{{#any 'landing' this.basename}} › Front-end Web Development, Interaction & Design{{/any}}</title>
     <meta name="description" content="{{description}}">
+
     {{#if production}}
     <meta name="robots" content="all">
     {{else}}
     <meta name="robots" content="none">
     {{/if}}
-    <meta name="author" content="{{title}}">
-    <meta name="Copyright" content="Copyright {{author}} ©2015. All Rights Reserved.">
+
+    <meta name="author" content="{{site.author}}">
+    <meta name="Copyright" content="{{site.author}} ©2015. All Rights Reserved.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
     <meta name="HandheldFriendly" content="True">
@@ -37,14 +39,13 @@
   </head>
   <body id="top">
 
-  <main role="main">
-  {% body %}
-  </main>
+    <main role="main">
+    {% body %}
+    </main>
 
-  {{> footer}}
+    {{> footer}}
 
-  <!-- build:js {{site.root}}/js/src/scripts.min.js -->
-  <script src="{{site.root}}/js/src/social-bloomer.js"></script>
-  <!-- endbuild -->
+    <!-- build:js {{site.root}}/js/src/scripts.min.js -->
+    <!-- endbuild -->
   </body>
 </html>

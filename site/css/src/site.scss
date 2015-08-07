@@ -52,6 +52,15 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
 
 // Organisms
 // ===============================================
+
+footer[role="contentinfo"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: darkred;
+}
+
+
 // Landing
 // ===============================================
 // Pages
