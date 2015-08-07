@@ -28,7 +28,7 @@ $.fs     = require('fs');
 // Configin'
 // ===================================================
 
-var env_flag = true;
+var env_flag = false;
 
 var asset_dir = {
   site: 'site',
