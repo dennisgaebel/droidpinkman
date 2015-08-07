@@ -28,7 +28,7 @@ $.fs     = require('fs');
 // Configin'
 // ===================================================
 
-var env_flag = true;
+var env_flag = false;
 
 var asset_dir = {
   site: 'site',
@@ -327,7 +327,7 @@ gulp.task('deploy', function() {
   return gulp.src([path.dist + '/**/*', path.dist + '/.htaccess' ])
               .pipe($.ghPages(
                 $.if(env_flag === false,
-                { branch: 'master' },
+                { branch: 'staging' },
                 { branch: 'gh-pages' })
               ));
 });
