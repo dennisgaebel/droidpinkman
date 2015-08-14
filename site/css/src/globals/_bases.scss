@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  color: map-get($atomic-colors, midnight-blue);
+  color: #183152;
 }
 
 img,
@@ -42,13 +42,12 @@ a {
 
   &:link,
   &:visited {
-    color: map-get($atomic-colors, flush-orange);
+    color: #D877FF;
   }
   &:focus,
   &:hover,
   &:active {
     font-weight: inherit;
-    color: #AF5C1E;
   }
 }
 
