@@ -35,10 +35,13 @@
     <link rel="stylesheet" href="{{site.root}}/css/site.css">
     <!-- endbuild -->
   </head>
-  <body id="top">
+  <body>
+    <header role="banner">
+      {{> logo}}
+    </header>
 
     <main role="main">
-    {% body %}
+      {% body %}
     </main>
 
     {{> footer}}
