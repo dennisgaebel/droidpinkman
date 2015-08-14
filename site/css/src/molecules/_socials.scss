@@ -1,33 +1,21 @@
-$count: 5;
-$proportion: 48px;
+$proportion: 42px;
 
 .socials {
-  height: $proportion;
-  position: relative;
-  width: $proportion;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
   a {
+    height: $proportion;
     width: $proportion;
   }
 
   svg path {
-    fill: #FFD7FF;
+    fill: #A503A5;
     stroke: rgba(255, 255, 255, 0.04);
   }
 
   a {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transition: 900ms all cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform-origin: top center;
-    z-index: 0;
-    opacity: 1;
-
     &:hover {
       cursor: pointer;
     }
@@ -38,20 +26,5 @@ $proportion: 48px;
     }
   }
 
-  svg         { transform: rotate(-180deg); }
-  svg#github  { transform: rotate(-90deg);  }
-  svg#dribble { transform: rotate(90deg);   }
-
-  svg:hover   { cursor: pointer; }
-}
-
-.socials a {
-  padding-top: 50%;
-}
-
-@for $i from 1 through $count {
-  .socials a:nth-of-type(#{$i}) {
-    transform: rotate(($i * (360/($count - 1))) + deg);
-    transition-delay: $i * 36ms;
-  }
+  svg:hover { cursor: pointer; }
 }
