@@ -291,7 +291,11 @@ gulp.task('usemin', ['assemble', 'sass'], function() {
         .pipe($.usemin({
           assetsDir: path.site,
           css: [ $.rev() ],
-          html: [ $.minhtml({ empty: false }) ],
+          html: [$.minhtml({
+            empty: true,
+            quotes: true,
+            comment: true
+          })],
           js: [ $.uglify(), $.rev() ]
         }))
         .pipe(gulp.dest(path.dist));
