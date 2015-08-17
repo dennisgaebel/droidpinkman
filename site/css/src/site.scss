@@ -27,23 +27,21 @@
 
 html,
 body {
-  height:100%;
+  height: 100%;
 }
 
 body {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   background: #960096;
 }
 
 
 // Utilities
 // ===============================================
-
-
 // Atoms
 // ===============================================
 
@@ -59,27 +57,5 @@ body {
 // Organisms
 // ===============================================
 
-header[role="banner"] {
-  svg {
-    height: 100px;
-    transform: translate(-28px);
-    width: 172px;
-  }
-}
-
-footer[role="contentinfo"] {
-  margin-top: 10px;
-  max-width: 200px;
-  width: 100%;
-}
-
-
-// Landing
-// ===============================================
-// Pages
-// ===============================================
-
-.landing main {
-  max-width: 1181px;
-  margin: 0 auto;
-}
+@import "organisms/header";
+@import "organisms/footer";
