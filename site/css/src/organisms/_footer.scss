@@ -1,5 +1,11 @@
 footer[role="contentinfo"] {
+  display: flex;
+  flex: 1;
+  align-items: center;
   margin-top: 10px;
-  max-width: 200px;
-  width: 100%;
+  padding-bottom: 24px;
+  .socials {
+    flex: 1;
+    justify-content: center;
+  }
 }

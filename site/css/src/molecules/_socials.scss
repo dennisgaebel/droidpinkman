@@ -1,12 +1,19 @@
 $proportion: 36px;
 
+header .socials {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
 .socials {
   display: flex;
-  justify-content: space-between;
   width: 100%;
 
   a {
     height: $proportion;
+    margin-left: 6px;
+    margin-right: 6px;
     width: $proportion;
   }
 

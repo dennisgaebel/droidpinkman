@@ -22,7 +22,8 @@ body {
 }
 
 body {
-  color: #183152;
+  font-family: 'Avenir LT W01_45 Book', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #DBDBDB;  //#FFA8D8, #EDEDED;
 }
 
 img,
@@ -54,5 +55,6 @@ a {
 @for $i from 1 through 6 {
   h#{$i} {
     text-transform: uppercase;
+    color: #EDEDED;
   }
 }
