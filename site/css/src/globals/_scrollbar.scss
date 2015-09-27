@@ -1,0 +1,19 @@
+$scrollbar_width: 12px;
+$scrollbar_track_color: #4F0D56;
+$scrollbar_thumb_color: #620D68;
+
+::-webkit-scrollbar {
+  width: $scrollbar_width;
+}
+::-webkit-scrollbar-track {
+  background: rgba(darken($scrollbar_track_color, 6%), 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: $scrollbar_thumb_color;
+}
+::-webkit-scrollbar-button {
+  background: $scrollbar_thumb_color;
+}
+::-webkit-scrollbar-corner {
+  background: $scrollbar_thumb_color;
+}

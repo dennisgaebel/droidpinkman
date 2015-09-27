@@ -22,8 +22,11 @@ body {
 }
 
 body {
+  font-size: 112.5%;
   font-family: 'Avenir LT W01_45 Book', 'Helvetica Neue', Helvetica, sans-serif;
-  color: #DBDBDB;  //#FFA8D8, #EDEDED;
+  font-weight: 100;
+  line-height: 1.5;
+  color: #DBDBDB;
 }
 
 img,
@@ -48,6 +51,7 @@ a {
   &:focus,
   &:hover,
   &:active {
+    color: #183152;
     font-weight: inherit;
   }
 }
