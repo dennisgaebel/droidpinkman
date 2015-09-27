@@ -115,28 +115,16 @@ $scrollbar_thumb_color: #620D68;
   font-size: 24px;
 }
 
-.ribbon-content {
-  li {
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  svg {
-    margin-right: 6px;
-    width: 72px;
-    height: auto;
-    vertical-align: middle;
-  }
-}
-
-.resize svg {
-  width: 42px;
-}
-
 .info {
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.09), 0 1px 0 rgba(255, 255, 255, 0.12);
   margin: 48px 0;
   padding-bottom: 32px;
+}
+
+.c-articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 
@@ -144,51 +132,6 @@ $scrollbar_thumb_color: #620D68;
 // ===============================================
 
 @import "molecules/socials";
-
-.ribbon {
- font-size: 16px !important;
- max-width: 86%;
- position: relative;
- background: #FFE6E6;
- color: #fff;
- text-align: center;
- padding: 2px 0;
- margin: 2em auto 3em;
-}
-.ribbon:before, .ribbon:after {
- content: "";
- position: absolute;
- display: block;
- bottom: -1em;
- border: 1.5em solid #D0D0D0;
- z-index: -1;
-}
-.ribbon:before {
- left: -2em;
- border-right-width: 1.5em;
- border-left-color: transparent;
-}
-.ribbon:after {
- right: -2em;
- border-left-width: 1.5em;
- border-right-color: transparent;
-}
-.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
- content: "";
- position: absolute;
- display: block;
- border-style: solid;
- border-color: #ADA6AC transparent transparent transparent;
- bottom: -1em;
-}
-.ribbon .ribbon-content:before {
- left: 0;
- border-width: 1em 0 0 1em;
-}
-.ribbon .ribbon-content:after {
- right: 0;
- border-width: 1em 1em 0 0;
-}
 
 
 // Organisms
