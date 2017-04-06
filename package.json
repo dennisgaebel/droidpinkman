@@ -6,6 +6,9 @@
   "homepage": "http://droidpinkman.io",
   "main": "https://github.com/dennisgaebel/droidpinkman.io",
   "license": "MIT",
+	"engines": {
+    "node": "4.x"
+  },
   "bugs": {
     "url": "https://github.com/dennisgaebel/droidpinkman.io/issues"
   },
@@ -19,15 +22,15 @@
   "dependencies": {
     "assemble": "assemble/assemble#v0.6.0",
     "gulp": "3.9.0",
-    "gulp-autoprefixer": "2.3.1",
-    "gulp-concat": "2.6.0",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-concat": "^2.6.1",
     "gulp-extname": "0.2.0",
     "gulp-foreach": "0.1.0",
     "gulp-if": "1.2.5",
     "gulp-load-plugins": "1.0.0-rc.1",
     "gulp-minify-html": "1.0.4",
     "gulp-rev": "5.1.0",
-    "gulp-sass": "2.0.4",
+    "gulp-sass": "^3.1.0",
     "gulp-uglify": "1.2.0",
     "gulp-usemin": "0.3.11",
     "gulp-util": "3.0.6",
