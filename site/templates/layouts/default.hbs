@@ -7,7 +7,7 @@
     <title>{{title}}{{#contains 'landing' this.basename}} › Front-end Web Development, Interaction & Design{{/contains}}</title>
     <meta name="description" content="{{description}}">
 
-    {{#if production}}
+    {{#if (isEnv "production")}}
     <meta name="robots" content="all">
     {{else}}
     <meta name="robots" content="none">
