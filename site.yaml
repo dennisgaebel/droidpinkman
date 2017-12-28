@@ -22,7 +22,5 @@ imgdir:            <%= site.root %>/img/site
 # META
 # =============================================
 
-# site
 title:              DroidPinkman
-author:             <%= pkg.author %>
-url:                <%= pkg.homepage %>
+author:             Dennis Gaebel
