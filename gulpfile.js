@@ -15,8 +15,14 @@ var gulp            = require('gulp'),
                           'gulp-if'          : 'if'
                         }
                       }),
+    yaml            = require('js-yaml'),
+    helpers         = require('handlebars-helpers'),
+    expand          = require('expand')(),
+    permalinks      = require('assemble-permalinks'),
     assemble        = require('assemble'),
+    app             = assemble(),
     del             = require('del'),
+    resolve         = require('path').resolve,
     merge           = require('merge-stream'),
     basename        = require('path').basename,
     extname         = require('path').extname;
@@ -141,117 +147,113 @@ gulp.task('sass', function() {
 // Templatin'
 // ===================================================
 
-// Pull #3. Also see https://github.com/assemble/assemble/issues/715
-// create a `categories` object to keep categories in (e.g. 'clients')
-// categories: {
-//  clients: {
-//    "polyon": { ... }
-//  }
-// };
-assemble.set('categories', {});
 
-/**
- Populate categories with pages that specify the categories they belong to.
- When the onLoad middleware runs for a single file, it looks at the file's front-matter (file.data) to see if it contains a categories property. This property can be a string or an array of strings. If it exists, then the middleware updates the categories object for each category in the array. In the case of polyon.hbs, there is only 1 category called client, so the categories object becomes:
+// Loaders
+// ================
 
-categories: {
- clients: {
-   "polyon": { ... }
- }
-};
- */
-
-assemble.onLoad(/\.hbs/, function(file, next) {
-  // if the file doesn't have a data object or
-  // doesn't contain `categories` in it's
-  // front-matter, move on.
-  if (!file.data || !file.data.categories) {
-    return next();
-  }
-
-  // use the default `renameKey` function to store
-  // pages on the `categories` object
-  var renameKey = assemble.option('renameKey');
-
-  // get the categories object
-  var categories = assemble.get('categories');
-
-  // figure out which categories this file belongs to
-  var cats = file.data.categories;
-  cats = Array.isArray(cats) ? cats : [cats];
-
-  // add this file's data (file object) to each of
-  // it's catogories
-  cats.forEach(function(cat) {
-    categories[cat] = categories[cat] || [];
-    categories[cat][renameKey(file.path)] = file;
-  });
-
-  // done
-  next();
+// @info
+// Load yaml files using a custom dataLoader.
+app.dataLoader('yaml', function(str, fp) {
+	return yaml.safeLoad(str);
 });
-
-
-/**
- * Handlebars helper to iterate over an object of pages for a specific category
- *
- * ```
- * {{#category "clients"}}
- *   <li>{{data.summary}}</li>
- * {{/category}}
- * ```
- */
-
-assemble.helper('category', function(category, options) {
-  var pages = this.app.get('categories.' + category);
-  if (!pages) {
-    return '';
-  }
-  return Object.keys(pages).map(function(page) {
-    // this renders the block between `{{#category}}` and `{{category}}` passing the
-    // entire page object as the context.
-    // If you only want to use the page's front-matter, then change this to something like
-    // return options.fn(pages[page].data);
-    return options.fn(pages[page]).toLowerCase();
-  }).join('\n');
-});
-
-/**
- * Load data onto assemble cache.
- * This loads data from `glob.data` and `glob.rootData`.
- * When loading `glob.rootData`, use a custom namespace function
- * to return `pkg` for `package.json`.
- *
- * After all data is loaded, process the data to resolve templates
- * in values.
- * @doowb PR: https://github.com/grayghostvisuals/grayghostvisuals/pull/5
- */
 
 function loadData() {
-  assemble.data(glob.data);
-  assemble.data(assemble.plasma(glob.rootData, {namespace: function (fp) {
-    var name = basename(fp, extname(fp));
-    if (name === 'package') return 'pkg';
-    return name;
-  }}));
-  assemble.data(assemble.process(assemble.data()));
+	app.data([glob.data, 'site.yaml', 'package.json'], { namespace: true });
+	app.data(expand(app.cache.data));
 }
 
+
+// Permalinks
+// ================
+
+// @info
+// Create a pages collection
+app.create('pages').use(permalinks(':category:name.html', {
+	category: function() {
+		if (!this.categories) return '';
+		var category = Array.isArray(this.categories) ? this.categories[0] : this.categories;
+		return category ? category + '/' : '';
+	}
+}));
+
+
+// Custom Helpers
+// ================
+
+// @info
+// Custom helper for environment control w/compiling
+app.helper('isEnv', function(env) {
+	return process.env.NODE_ENV === env;
+});
+
+// @info
+// Handlebars helper that iterates over an
+// object of pages for a specific category
+//
+// @example
+// {{#category "clients"}}
+//   {{data.summary}}
+// {{/category}}
+app.helper('category', function(category, options) {
+	var pages = this.app.get('categories.' + category);
+	if (!pages) {
+		return '';
+	}
+
+	return Object.keys(pages).map(function(page) {
+		// this renders the block between
+		// `{{#category}}` and `{{/category}}`
+		// passing the entire page object as the context.
+		return options.fn(pages[page]);
+	}).join('\n');
+});
+
+app.helper('date', function() {
+	var time_stamp = new Date();
+	return time_stamp;
+});
+
+
+// Assemble Tasks
+// ================
+
+// @info
 // Placing assemble setups inside the task allows
-// live reloading/monitoring for files changes.
+// live reloading/monitoring of files changed.
 gulp.task('assemble', function() {
-  assemble.option('production', env_flag);
-  assemble.option('layout', 'default');
-  assemble.layouts(glob.layouts);
-  assemble.partials(glob.includes);
-  loadData();
+	app.option('layout', 'default');
+	app.helpers(helpers());
+	app.layouts(glob.layouts);
+	app.partials(glob.includes);
+	loadData();
 
-  var stream = assemble.src(glob.pages)
-    .pipe($.extname())
-    .pipe(assemble.dest(path.site))
-    .pipe($.connect.reload());
+	// @info
+	// https://github.com/assemble/assemble-permalinks/issues/8#issuecomment-231181277
+	// Load pages onto the pages collection to ensure the page templates are put on the
+	// correct collection and the middleware is triggered.
+	app.pages(glob.pages);
 
-  return stream;
+	var stream = app.toStream('pages')
+		.pipe($.newer(glob.pages))
+		.on('error', console.log)
+		.pipe(app.renderFile())
+		.on('error', console.log)
+		.pipe($.extname())
+		.on('error', console.log)
+		// @info
+		// update the file.path before writing
+		// the file to the file system.
+		.pipe(app.dest(function(file) {
+			// @info
+			// Creates a permalink and puts it on file.data.permalink.
+			// This can be used in other templates for linking.
+			file.path = resolve(file.base, file.data.permalink);
+			return path.site;
+		}))
+		.on('error', console.log)
+		.pipe($.livereload());
+
+	return stream;
 });
 
 
@@ -291,7 +293,7 @@ gulp.task('usemin', ['assemble', 'sass'], function() {
         .pipe($.usemin({
           assetsDir: path.site,
           css: [ $.rev() ],
-          html: [$.minhtml({
+          html: [$.htmlmin({
             empty: true,
             quotes: true,
             comment: true
