@@ -35,7 +35,7 @@ $.fs     = require('fs');
 // Configin'
 // ===================================================
 
-var env_flag = false;
+var env_flag = true;
 
 var asset_dir = {
   site: 'site',
@@ -119,6 +119,7 @@ gulp.task('mocha', function () {
 // Stylin'
 // ===================================================
 
+// $.if(process.env.NODE_ENV === 'production', '')
 gulp.task('sass', function() {
   var stream = gulp.src(glob.sass)
     .pipe($.if(env_flag === false, $.sourcemaps.init()))
