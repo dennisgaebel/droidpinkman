@@ -99,10 +99,11 @@ gulp.task('serve', ['assemble'], function() {
 gulp.task('preview', function() {
   $.connect.server({
     root: [path.dist],
+    https: true,
     port: 5001
   });
 
-  $.exec('open http://localhost:5001');
+  $.exec('open https://localhost:5001');
 });
 
 
@@ -313,7 +314,7 @@ gulp.task('usemin', ['assemble', 'sass'], function() {
 
 gulp.task('copy', ['usemin'], function() {
   return merge(
-    gulp.src([path.site + '/{articles,img,bower_components,js/lib}/**/*'])
+    gulp.src([path.site + '/{articles,img,fonts,bower_components,js/lib}/**/*'])
         .pipe(gulp.dest(path.dist)),
 
     gulp.src([
