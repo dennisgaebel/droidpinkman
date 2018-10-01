@@ -79,6 +79,7 @@ gulp.task('serve', ['assemble'], function() {
   $.connect.server({
     root: [path.site],
     port: 5000,
+    https: true,
     livereload: true,
     middleware: function(connect) {
       return [
@@ -87,7 +88,7 @@ gulp.task('serve', ['assemble'], function() {
     }
   });
 
-  $.exec('open http://localhost:5000');
+  $.exec('open https://localhost:5000');
 });
 
 
