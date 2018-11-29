@@ -66,6 +66,10 @@ body {
   padding-bottom: 32px;
 }
 
+.c-logo svg {
+  max-width: 200px;
+}
+
 .c-articles {
   display: flex;
   flex-wrap: wrap;
@@ -103,4 +107,20 @@ body {
 .u-lsreset {
   list-style-type: none;
   padding-left: 0;
+}
+
+.l-full-screen {
+  @media screen and (min-width: 844px) {
+    height: 100vh;
+  }
+}
+
+.l-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  place-items: center;
+  grid-auto-flow: dense;
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
 }
