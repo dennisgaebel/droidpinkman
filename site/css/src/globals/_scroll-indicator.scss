@@ -20,8 +20,15 @@ $tcon-svgchevron-timing: 3s !default;
 }
 
 .tcon-indicator {
-  position: absolute;
-  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  @media screen and (min-width: 844px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 .tcon-svgchevron path {
