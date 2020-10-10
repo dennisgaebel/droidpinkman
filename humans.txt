@@ -37,6 +37,6 @@ ooooooooooooo                     oooo
 
 -------------------------------------------------------------------------------
 
-Tooling: Atom, iTerm, Illustrator, Photoshop, Gulp, Node, Git, Assemble, Bower, NPM
-OpenSource HT: Atomic Guide, Normalize
 Platform: Node
+Tools: VSCode, iTerm, Illustrator, Photoshop, Sketch, NPM, Eleventy
+OpenSource HT: Normalize, Luxon, SVGO, Git

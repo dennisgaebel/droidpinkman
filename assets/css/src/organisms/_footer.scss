@@ -1,0 +1,34 @@
+footer[role="contentinfo"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 24px;
+  @media screen and (min-width: 564px) {
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  small {
+    display: none;
+    @media screen and (min-width: 564px) {
+      display: inline-block;
+      flex: 1
+    }
+  }
+
+  a[href*="mailto"] {
+    display: none;
+    @media screen and (min-width: 564px) {
+      display: inline-block;
+    }
+  }
+
+  .socials {
+    justify-content: center;
+    @media screen and (min-width: 564px) {
+      flex: 6;
+    }
+  }
+}

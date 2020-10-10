@@ -1,0 +1,51 @@
+$tcon-size: 40px !default;
+$tcon-transition: 300ms !default;
+$tcon-jstransform: 'tcon-transform' !default;
+
+$tcon-svgchevron-size: $tcon-size !default;
+$tcon-svgchevron-color: #c72ac7 !default;
+$tcon-svgchevron-strokew: 1px !default;
+$tcon-svgchevron-timing: 3s !default;
+
+@keyframes chevron-pulse {
+  0%   { opacity: 0; }
+  40%  { opacity: 1; }
+  80%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.tcon-svgchevron {
+  height: $tcon-svgchevron-size;
+  width: $tcon-svgchevron-size;
+}
+
+.tcon-indicator {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+
+  @media screen and (min-width: 844px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.tcon-svgchevron path {
+  animation: chevron-pulse $tcon-svgchevron-timing infinite cubic-bezier(0.4, 0, 0.2, 1);
+  fill: transparent;
+  stroke: $tcon-svgchevron-color;
+  stroke-width: $tcon-svgchevron-strokew;
+}
+
+@for $i from 1 through 3 {
+  .tcon-svgchevron path.a#{$i} {
+    animation-delay: -($i - ($i/2)) + 0.5s;
+  }
+}

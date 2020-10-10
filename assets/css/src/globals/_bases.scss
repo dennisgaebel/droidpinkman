@@ -1,0 +1,64 @@
+* {
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-size: 112.5%;
+  font-family: 'Avenir LT W01_45 Book', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 100;
+  line-height: 1.5;
+  color: #DBDBDB;
+}
+
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width:100%;
+}
+
+a {
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: #D877FF;
+  }
+  &:focus,
+  &:hover,
+  &:active {
+    color: #183152;
+    font-weight: inherit;
+  }
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    text-transform: uppercase;
+    color: #EDEDED;
+  }
+}

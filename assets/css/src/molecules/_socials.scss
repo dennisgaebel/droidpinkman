@@ -1,0 +1,46 @@
+$proportion: 36px;
+
+header .socials {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.socials {
+  display: flex;
+  width: 100%;
+
+  a {
+    display: inline-block;
+    height: $proportion;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: $proportion;
+  }
+
+  svg path {
+    fill: #B706B7;
+    stroke: rgba(255, 255, 255, 0.04);
+  }
+
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover svg path {
+      fill: #183152;
+      stroke: rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  svg:hover { cursor: pointer; }
+}
+
+.info .socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
