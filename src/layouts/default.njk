@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>{{siteData.name}}{% if title %} | {{title}}{% endif %}</title>
+
+		<meta name="description" content="{{description}}">
+
+		<meta name="robots" content="all">
+
+		<meta name="author" content="{{siteData.author}}">
+		<meta name="Copyright" content="©{% year %}. All Rights Reserved.">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="msapplication-tap-highlight" content="no">
+
+		<meta property="og:title" content="{{siteData.name}}{% if title %}{{title}}{% endif %}">
+		<meta property="og:type" content="profile">
+		<meta property="og:url" content="{{siteData.url}}">
+		<meta property="og:image" content="{{siteData.url}}/ograph.png">
+		<meta property="og:description" content="{{description}}">
+		<meta property="fb:admins" content="1">
+
+		<link rel="author" href="https://{{siteData.url}}/humans.txt">
+
+		<link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+
+		{% if siteConfig.environment == "development" %}
+			{# Global site tag (gtag.js) - Google Analytics #}
+		{% else %}
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130129128-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-130129128-1');
+		</script>
+		{% endif %}
+	</head>
+
+	<body>
+		<header class="l-full-screen" role="banner">
+			<div class="l-grid l-full-screen">
+				<div class="c-logo">
+					{% include "logo.njk" %}
+				</div>
+
+				<div>
+					<h2>Hello World</h2>
+					<p>I'm Dennis. I specialize in SVG Animations, UI Prototyping, Visual Design, and building Modular Atomic Design Systems for the Web. I also consult and write about it. <a href="#the-story">Learn more about me</a> or <a href="#work">view my work</a>.</p>
+				</div>
+			</div>
+
+			<span class="tcon-indicator" aria-label="scroll" aria-hidden="true">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="tcon-svgchevron" viewBox="0 0 30 36">
+					<path class="a3" d="M0,0l15,16L30,0"></path>
+					<path class="a2" d="M0,10l15,16l15-16"></path>
+					<path class="a1" d="M0,20l15,16l15-16"></path>
+				</svg>
+			</span>
+		</header>
+
+		<main class="l-container" role="main">{{ content | safe }}</main>
+
+		<footer role="footer">
+			{% include "footer.njk" %}
+		</footer>
+	</body>
+</html>
