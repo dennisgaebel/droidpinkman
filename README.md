@@ -4,7 +4,7 @@
 
  - Site Generator : 11ty
  - Template Language : Nunjucks
- - Styles : Sass
+ - Styles : [Sass](https://www.belter.io/eleventy-sass-workflow)
  - Package Manager : NPM
  - Node v12.18.3
 
