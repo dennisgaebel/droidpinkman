@@ -7,6 +7,7 @@
  - Styles : [Sass](https://www.belter.io/eleventy-sass-workflow)
  - Package Manager : NPM
  - Node v12.18.3
+ - Builder : [GitHub Workflows](https://www.rockyourcode.com/how-to-deploy-eleventy-to-github-pages-with-github-actions)
 
 ## Installation
 
