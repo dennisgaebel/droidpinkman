@@ -8,7 +8,11 @@
 
 		<meta name="description" content="{{description}}">
 
+		{% if siteConfig.environment == "development" %}
+		<meta name="robots" content="none">
+		{% else %}
 		<meta name="robots" content="all">
+		{% endif %}
 
 		<meta name="author" content="{{siteData.author}}">
 		<meta name="Copyright" content="©{% year %}. All Rights Reserved.">
