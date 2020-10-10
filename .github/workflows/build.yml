@@ -1,4 +1,4 @@
-name: Build droidpinkman.io
+name: Build Eleventy
 
 on:
   push:
