@@ -17,11 +17,11 @@ $ npm install
 ### Serve Templates
 
 ```shell
-npx @11ty/eleventy
+npm start
 ```
 
 ```shell
-npx @11ty/eleventy --serve
+npm build
 ```
 
 ## Environment Control

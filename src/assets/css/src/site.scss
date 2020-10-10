@@ -13,7 +13,7 @@
 // Bower Plugins
 // ===============================================
 
-@import "../../bower_components/normalize-scss/normalize.scss";
+// @import "../../../../../node_modules/normalize.css/normalize.css";
 
 
 // Globals
@@ -47,6 +47,22 @@ body {
 // ===============================================
 
 @import "atoms/typography";
+
+.btn {
+  background: #8a1486;
+  color: white !important;
+  padding: .5rem 1rem;
+  border: 2px solid rgba(3, 0, 2, 0.09);
+  border-radius: 4px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  max-width: 200px;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .avatar {
   display: flex;

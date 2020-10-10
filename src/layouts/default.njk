@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="{{name}}" lang="en">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,5 +75,8 @@
 		<footer role="footer">
 			{% include "footer.njk" %}
 		</footer>
+
+		{% if siteConfig.environment == "development" %}
+		{% endif %}
 	</body>
 </html>

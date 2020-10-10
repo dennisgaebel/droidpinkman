@@ -6,18 +6,20 @@ module.exports = function(config) {
     return DateTime.local().toFormat('yyyy');
   });
 
-  config.addWatchTarget('./src/assets');
   config.addLayoutAlias('default', 'default.njk');
+
+  config.addWatchTarget('./src/assets');
+  config.addWatchTarget('./src/assets/css/src');
 
   config.addPassthroughCopy('src/robots.txt');
   config.addPassthroughCopy('src/humans.txt');
   config.addPassthroughCopy('src/favicon.ico');
   config.addPassthroughCopy('src/articles');
   config.addPassthroughCopy('src/CNAME');
-  config.addPassthroughCopy('src/assets/images');
-  config.addPassthroughCopy('src/assets/css');
-  config.addPassthroughCopy('src/assets/fonts');
   config.addPassthroughCopy('src/assets/docs');
+  config.addPassthroughCopy('src/assets/css');
+  config.addPassthroughCopy('src/assets/images');
+  config.addPassthroughCopy('src/assets/fonts');
 
   return {
     dir: {
