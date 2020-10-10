@@ -8,7 +8,7 @@
 
 		<meta name="description" content="{{description}}">
 
-		{% if siteConfig.environment == "development" %}
+		{% if envConfig.environment == "development" %}
 		<meta name="robots" content="none">
 		{% else %}
 		<meta name="robots" content="all">
@@ -34,7 +34,7 @@
 
 		<link rel="stylesheet" href="{{ 'assets/css/site.css' | url }}">
 
-		{% if siteConfig.environment == "development" %}
+		{% if envConfig.environment == "development" %}
 			{# Global site tag (gtag.js) - Google Analytics #}
 		{% else %}
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130129128-1"></script>
