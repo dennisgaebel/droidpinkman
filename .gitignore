@@ -2,14 +2,9 @@
 .sass-cache
 # dotfiles
 *.log
-.publish/
+.publish
 .DS_Store
+.env
 #dirs
-node_modules/
-site/bower_components
-lib/*
-dist/*
-site/client
-site/css/**/*.css
-#files
-site/*.html
+node_modules
+dist

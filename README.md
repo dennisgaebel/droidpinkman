@@ -2,67 +2,44 @@
 
 ## Project Overview
 
- - Templates : Assemble
+ - Site Generator : 11ty
+ - Template Language : Nunjucks
  - Styles : Sass
- - Task Manager : Gulp
- - Pkg Mgr: NPM & Bower
+ - Package Manager : NPM
+ - Node v12.18.3
 
 ## Installation
 
 ```javascript
-$ npm install && bower install
+$ npm install
 ```
 
-## Gulp Tasks
+### Serve Templates
 
-**Local Development**
-
-```javascript
-$ gulp
+```shell
+npx @11ty/eleventy
 ```
 
-**Production Build**
-
-```javascript
-$ gulp build
-```
-
-**Clean Environment**
-
-```javascript
-$ gulp clean
-```
-
-**Preview Build**
-
-```javascript
-$ gulp preview
-```
-
-**Deployment**
-
-```javascript
-$ gulp deploy
+```shell
+npx @11ty/eleventy --serve
 ```
 
 ## Environment Control
 
-Environmental controls are governed by an option found within ``gulpfile.js``.
+Environmental controls are governed by an option found within ``siteConfig.js``. [Docs reference](https://www.11ty.dev/docs/data-js/#example-exposing-environment-variables)
 
-```javascript
-assemble.option('production', <true | false>);
+```shell
+ELEVENTY_ENV=development npx @11ty/eleventy --serve
 ```
 
-```html
-{{#if production}}
-<script src="script.min.js"></script>
-{{else}}
-<script src="script.js"></script>
-{{/if}}
+```shell
+ELEVENTY_ENV=production npx @11ty/eleventy
 ```
 
-From any template use the ``{{#if}}`` condition to control output for post compile.There's also an object in Node for [process.env](https://nodejs.org/api/process.html#process_process_env).
-
-```javascript
-assemble.option('env', process.env);
+```nunjucks
+{% if siteConfig.environment == "production" %}
+<style>{{ css | cssmin | safe }}</style>
+{% else %}
+<style>{{ css | safe }}</style>
+{% endif %}
 ```
