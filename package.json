@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all devsass --parallel watch:*",
-    "build": "npm run prodsass && ELEVENTY_ENV=production npx @11ty/eleventy",
+    "build": "npm run prodsass && ELEVENTY_ENV=production npx @11ty/eleventy --pathprefix 'droidpinkman.io'",
     "prodsass": "sass --style=compressed src/assets/css/src/site.scss src/assets/css/site.css",
     "devsass": "sass src/assets/css/src/site.scss src/assets/css/site.css",
     "watch:serve": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
