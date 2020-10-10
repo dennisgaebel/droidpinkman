@@ -28,11 +28,7 @@
 
 		<link rel="author" href="https://{{siteData.url}}/humans.txt">
 
-		{% if siteConfig.environment == "production" %}
-			<link rel="stylesheet" href="/css/site.min.css">
-		{% else %}
-			<link rel="stylesheet" href="/assets/css/site.css">
-		{% endif %}
+		<link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
 
 		{% if siteConfig.environment == "development" %}
 			{# Global site tag (gtag.js) - Google Analytics #}
@@ -75,8 +71,5 @@
 		<footer role="footer">
 			{% include "footer.njk" %}
 		</footer>
-
-		{% if siteConfig.environment == "development" %}
-		{% endif %}
 	</body>
 </html>
