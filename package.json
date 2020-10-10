@@ -9,11 +9,11 @@
     "url": "https://github.com/dennisgaebel/droidpinkman.io/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run prodsass && ELEVENTY_ENV=production npx @11ty/eleventy",
     "start": "npm-run-all devsass --parallel watch:*",
     "build": "npm run prodsass && ELEVENTY_ENV=production npx @11ty/eleventy --pathprefix 'droidpinkman.io'",
-    "prodsass": "sass --style=compressed src/assets/css/src/site.scss src/assets/css/site.css",
-    "devsass": "sass src/assets/css/src/site.scss src/assets/css/site.css",
+    "prodsass": "sass --no-source-map --load-path=node_modules --style=compressed src/assets/css/src/site.scss src/assets/css/site.css",
+    "devsass": "sass --load-path=node_modules --style=expanded src/assets/css/src/site.scss src/assets/css/site.css",
     "watch:serve": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
     "watch:sass": "npm run devsass -- --watch",
     "debug": "DEBUG=* npx eleventy"
@@ -27,10 +27,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
+    "@11ty/eleventy": "^0.11.0",
     "luxon": "^1.25.0",
     "normalize.css": "^8.0.1",
     "sass": "^1.27.0"
