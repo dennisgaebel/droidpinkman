@@ -8,4 +8,5 @@
 #dirs
 node_modules
 dist
-src/assets/css/*.css.map
+src/assets/css/*.map
+src/assets/css/*.css
