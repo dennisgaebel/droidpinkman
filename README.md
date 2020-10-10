@@ -21,26 +21,19 @@ $ npm install
 npm start
 ```
 
-```shell
-npm build
-```
-
 ## Environment Control
 
 Environmental controls are governed by an option found within ``siteConfig.js``. [Docs reference](https://www.11ty.dev/docs/data-js/#example-exposing-environment-variables)
 
 ```shell
-ELEVENTY_ENV=development npx @11ty/eleventy --serve
+ELEVENTY_ENV=development
 ```
 
 ```shell
-ELEVENTY_ENV=production npx @11ty/eleventy
+ELEVENTY_ENV=production
 ```
 
 ```nunjucks
-{% if siteConfig.environment == "production" %}
-<style>{{ css | cssmin | safe }}</style>
-{% else %}
-<style>{{ css | safe }}</style>
+{% if envConfig.environment == "[production|development]" %}
 {% endif %}
 ```
