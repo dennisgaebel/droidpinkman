@@ -4,6 +4,10 @@ const { DateTime } = require("luxon");
 module.exports = function(config) {
   config.addShortcode("year", dateObj => {
     return DateTime.local().toFormat('yyyy');
+	});
+	
+	config.addShortcode("timestamp", dateObj => {
+    return DateTime.local().toFormat('MMddyyyyHHmmSSS');
   });
 
   config.addLayoutAlias('default', 'default.njk');
