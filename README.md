@@ -6,19 +6,31 @@
  - Template Language : Nunjucks
  - Styles : [Sass](https://www.belter.io/eleventy-sass-workflow)
  - Package Manager : NPM
- - Node v12.18.3
- - Builder : [GitHub Workflows](https://www.rockyourcode.com/how-to-deploy-eleventy-to-github-pages-with-github-actions)
+ - Foundation : Node v12.x
+ - Deployment : GH Pages and [GitHub Workflows](https://www.rockyourcode.com/how-to-deploy-eleventy-to-github-pages-with-github-actions)
 
 ## Installation
 
-```javascript
-$ npm install
+```shell
+npm install
 ```
 
-### Serve Templates
+## CLI Commands
 
 ```shell
 npm start
+```
+
+```shell
+npm test
+```
+
+```shell
+npm build
+```
+
+```shell
+npm debug
 ```
 
 ## Environment Control
