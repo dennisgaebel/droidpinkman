@@ -2,18 +2,27 @@ const { DateTime } = require("luxon");
 
 // @docs https://www.11ty.io/docs/config
 module.exports = function(config) {
-  config.addShortcode("year", dateObj => {
+
+	// Time Stamps
+	config.addShortcode("year", dateObj => {
     return DateTime.local().toFormat('yyyy');
-	});
-	
+	});	
+
 	config.addShortcode("timestamp", dateObj => {
     return DateTime.local().toFormat('MMddyyyyHHmmSSS');
-  });
+	});
 
-  config.addLayoutAlias('default', 'default.njk');
+	// Custom Categories
+	// config.addCollection("posts", function (collection) {
+  //   return collection.getFilteredByGlob("./src/posts/*.njk").reverse();
+	// });
 
-  config.addWatchTarget('./src/assets');
+	// Local Development
+	config.addLayoutAlias('default', 'default.njk');
+	config.addLayoutAlias('blog', 'blog.njk');
+	config.addWatchTarget('./src/assets');
 
+	// Approved Build Files
   config.addPassthroughCopy('src/robots.txt');
   config.addPassthroughCopy('src/humans.txt');
   config.addPassthroughCopy('src/favicon.ico');
