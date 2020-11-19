@@ -32,7 +32,7 @@
 
 		<link rel="author" href="{{siteData.url}}/humans.txt">
 
-		<link rel="stylesheet" href="{{'assets/css/site.css' | url}}?v={% timestamp %}">
+		<link rel="stylesheet" href="{{'/assets/css/site.css' | url}}?v={% timestamp %}">
 
 		{% if envConfig.environment == "production" %}
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130129128-1"></script>
@@ -55,7 +55,9 @@
 
 				<div>
 					<h2>Hello World</h2>
-					<p>I'm Dennis. I specialize in SVG Animations, UI Prototyping, Visual Design, and building Modular Atomic Design Systems for the Web. I also consult and write about it. <a href="#the-story">Learn more about me</a> or <a href="#work">view my work</a>.</p>
+					<p>I'm Dennis. I specialize in SVG Animations, UI Prototyping, Visual Design, and building Modular Atomic Design Systems for the Web. I also consult and write about it.</p>
+
+					{% include "nav.njk" %}
 				</div>
 			</div>
 
